@@ -7,9 +7,6 @@ node {
            python 17%2.py
            echo ""
            python 근위병.py
-           del ../test_pipe@script@tmp
-           del ../test_pipe@tmp
-           del ../test_pipe
         ''')
         println stdout
     }
