@@ -11,11 +11,6 @@ node {
         println stdout
     }
 }
-agent {
-    node {
-        customWorkspace "C:\\Windows\\System32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\${JOB_NAME}"
-    }
-}
 stage('del') {
     post {
         cleanup {
