@@ -11,8 +11,13 @@ node {
         println stdout
     }
 }
-stage('del') {
-    pipeline {
+pipeline {
+    agent {
+        node {
+            customWorkspace "C:\\Windows\\System32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\${JOB_NAME}"
+        }
+    }
+    stage('del') {
         post {
             cleanup {
                 /* clean up our workspace */
