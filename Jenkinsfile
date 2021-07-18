@@ -10,19 +10,19 @@ node {
         ''')
         println stdout
     }
-    stage('del') {
-        post {
-            cleanup {
-                /* clean up our workspace */
+}
+stage('del') {
+    post {
+        cleanup {
+            /* clean up our workspace */
+            deleteDir()
+            /* clean up tmp directory */
+            dir("${workspace}@tmp") {
                 deleteDir()
-                /* clean up tmp directory */
-                dir("${workspace}@tmp") {
-                    deleteDir()
-                }
-                /* clean up script directory */
-                dir("${workspace}@script@tmp") {
-                    deleteDir()
-                }
+            }
+            /* clean up script directory */
+            dir("${workspace}@script@tmp") {
+                deleteDir()
             }
         }
     }
