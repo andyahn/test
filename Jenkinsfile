@@ -11,8 +11,8 @@ node {
         println stdout
     }
 }
-pipeline {
-    stage('del') {
+stage('del') {
+    pipeline {
         post {
             cleanup {
                 /* clean up our workspace */
