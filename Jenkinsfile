@@ -11,25 +11,23 @@ node {
         println stdout
     }
 }
-pipeline {
-    agent {
-        node {
-            customWorkspace "C:\\Windows\\System32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\${JOB_NAME}"
-        }
+agent {
+    node {
+        customWorkspace "C:\\Windows\\System32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\${JOB_NAME}"
     }
-    stage('del') {
-        post {
-            cleanup {
-                /* clean up our workspace */
+}
+stage('del') {
+    post {
+        cleanup {
+            /* clean up our workspace */
+            deleteDir()
+            /* clean up tmp directory */
+            dir("${workspace}@tmp") {
                 deleteDir()
-                /* clean up tmp directory */
-                dir("${workspace}@tmp") {
-                    deleteDir()
-                }
-                /* clean up script directory */
-                dir("${workspace}@script@tmp") {
-                    deleteDir()
-                }
+            }
+            /* clean up script directory */
+            dir("${workspace}@script@tmp") {
+                deleteDir()
             }
         }
     }
