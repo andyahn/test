@@ -7,23 +7,10 @@ node {
            python 17%2.py
            echo ""
            python 근위병.py
+           del ../test_pipe@script@tmp
+           del ../test_pipe@tmp
+           del ../test_pipe
         ''')
         println stdout
-    }
-}
-stage('del') {
-    post {
-        cleanup {
-            /* clean up our workspace */
-            deleteDir()
-            /* clean up tmp directory */
-            dir("${workspace}@tmp") {
-                deleteDir()
-            }
-            /* clean up script directory */
-            dir("${workspace}@script@tmp") {
-                deleteDir()
-            }
-        }
     }
 }
