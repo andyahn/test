@@ -6,6 +6,7 @@ node {
            echo ""
            python ${workspace}@script\\근위병.py
         ''')
-        println stdout
+        println stdout;
+        println '${workspace}@script'
     }
 }
